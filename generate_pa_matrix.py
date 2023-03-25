@@ -21,6 +21,7 @@ def get_options():
 def parse_mmseqs(infile, outpref):
     all_genomes = set()
     cluster_dict = {}
+    member_dict = {}
 
     with open(infile, "r") as f:
         for line in f:
@@ -38,16 +39,17 @@ def parse_mmseqs(infile, outpref):
 
             cluster_dict[centroid].append(member)
 
+            member_dict[member] = centroid
+
     # save cluster assignments
-    with open(outpref + '.json', 'w') as fp:
-        json.dump(cluster_dict, fp)
+    with open(outpref + '_clusters.json', 'w') as fp:
+        json.dump(member_dict, fp)
 
     # save gene pa
     all_genomes_list = list(all_genomes)
     all_genomes_dict = {k: v for v, k in enumerate(all_genomes_list)}
 
     pa_dict = {}
-    #pa_dict["Genomes"] = all_genomes_list
     for centroid, cluster in cluster_dict.items():
         centroid_list = [0] * len(all_genomes_list)
 
@@ -61,7 +63,7 @@ def parse_mmseqs(infile, outpref):
     pa_mat = pd.DataFrame.from_dict(pa_dict)
     pa_mat.index = all_genomes_list
 
-    pa_mat.to_csv(outpref + "gene_pa.csv")
+    pa_mat.to_csv(outpref + "_gene_pa.csv")
 
 def main():
     options = get_options()
