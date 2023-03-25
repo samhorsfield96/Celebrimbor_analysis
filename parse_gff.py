@@ -1,8 +1,5 @@
-import Bio.SeqIO
 from BCBio import GFF
-import pyrodigal
 import argparse
-import pandas as pd
 import json
 
 

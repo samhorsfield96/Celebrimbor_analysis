@@ -1,4 +1,3 @@
-import Bio.SeqIO
 import argparse
 import pandas as pd
 import json
