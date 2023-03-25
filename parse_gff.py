@@ -28,11 +28,13 @@ def parse_genes(infile):
 
     with open(infile, "r") as f:
         for rec in GFF.parse(f):
+            record_id = rec.id
+            if member_genome == None:
+                member_genome = record_id.split(".")[0]
             for feat in rec.features:
-                if member_genome == None:
-                    member_genome = feat.id.split(".")[0]
-                if feat.type == "gene":
-                    gene_dict[feat.id] = (int(feat.location.start), int(feat.location.end))
+                if feat.type == "CDS":
+                    CDS_id = feat.id.split("_")[-1]
+                    gene_dict[record_id + "_" + CDS_id] = (int(feat.location.start), int(feat.location.end))
 
     return member_genome, gene_dict
 
