@@ -23,6 +23,8 @@ def parse_genes(infile):
     member_genome = None
     gene_dict = {}
 
+    contig_pos = 0
+
     with open(infile, "r") as f:
         for rec in GFF.parse(f):
             record_id = rec.id
@@ -31,9 +33,11 @@ def parse_genes(infile):
             for feat in rec.features:
                 if feat.type == "CDS":
                     CDS_id = feat.id.split("_")[-1]
-                    gene_dict[record_id + "_" + CDS_id] = (int(feat.location.start), int(feat.location.end))
+                    gene_dict[record_id + "_" + CDS_id] = (int(feat.location.start) + contig_pos, int(feat.location.end) + contig_pos)
+            contig_pos += len(rec.seq)
 
-    return member_genome, gene_dict
+
+    return member_genome, contig_pos, gene_dict
 
 
 def main():
@@ -49,8 +53,8 @@ def main():
 
     isolate_genes = {}
     for entry in infile_list:
-        member_genome, gene_dict = parse_genes(entry)
-        isolate_genes[member_genome] = gene_dict
+        member_genome, total_length, gene_dict = parse_genes(entry)
+        isolate_genes[member_genome] = (total_length, gene_dict)
 
     # save cluster assignments
     with open(outpref + '.json', 'w') as fp:
