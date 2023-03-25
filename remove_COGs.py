@@ -27,11 +27,14 @@ def get_options():
                     help='Genome completeness distribution for sampling. ')
     IO.add_argument('--prop-complete',
                     default=0,
+                    type=float,
                     help='Proportion of complete genomes between 0-1. Default = 0. ')
     IO.add_argument('--prop-CDS',
                     default=0.8,
+                    type=float,
                     help='Proportion of a gene to be present after slicing to be considered able to cluster. Default = 0.8')
     IO.add_argument('--avg-breaks',
+                    type=int,
                     default=0,
                     help='Average number of breaks in section to be removed from genomes. Default = 0')
     IO.add_argument('--outpref',
