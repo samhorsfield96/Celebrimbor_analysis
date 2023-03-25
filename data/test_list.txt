@@ -1,0 +1,1 @@
+/mnt/c/Users/sth19/PycharmProjects/PhD_project/Celebrimbor_analysis/data/11679_4_82.contigs_spades.gff
