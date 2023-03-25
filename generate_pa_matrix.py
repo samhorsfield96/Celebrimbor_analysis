@@ -25,7 +25,8 @@ def parse_mmseqs(infile, outpref):
 
     with open(infile, "r") as f:
         for line in f:
-            split_line = line.split("\t")
+            split_line = line.rstrip()
+            split_line = split_line.split("\t")
             centroid = split_line[0]
             member = split_line[-1]
 
