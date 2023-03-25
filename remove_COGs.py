@@ -4,9 +4,9 @@ import pandas as pd
 import numpy as np
 
 def get_options():
-    description = 'Generates ORFs from a Bifrost graph.'
+    description = 'Removes COGs from presence/absence matrix based on epirical distribution of completeness.'
     parser = argparse.ArgumentParser(description=description,
-                                     prog='ggcaller')
+                                     prog='python remove_COGs')
 
     IO = parser.add_argument_group('Input/Output options')
     IO.add_argument('--pa-file',

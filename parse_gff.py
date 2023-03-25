@@ -4,9 +4,9 @@ import json
 
 
 def get_options():
-    description = 'Generates ORFs from a Bifrost graph.'
+    description = 'Generates position json based on Prodigal gffs.'
     parser = argparse.ArgumentParser(description=description,
-                                     prog='ggcaller')
+                                     prog='python parse_gff.py')
 
     IO = parser.add_argument_group('Input/Output options')
     IO.add_argument('--infile',

@@ -3,9 +3,9 @@ import pandas as pd
 import json
 
 def get_options():
-    description = 'Generates ORFs from a Bifrost graph.'
+    description = 'Parses mmseqs2 .tsv into gene presence/absence matrix'
     parser = argparse.ArgumentParser(description=description,
-                                     prog='ggcaller')
+                                     prog='python generate_pa_matrix.py')
 
     IO = parser.add_argument_group('Input/Output options')
     IO.add_argument('--infile',
