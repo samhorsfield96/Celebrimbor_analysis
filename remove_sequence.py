@@ -62,7 +62,14 @@ def main():
     outdir = options.outdir
     avg_breaks = options.avg_breaks
 
-    # set average breaks to zero to ensure that the number of splits made is equal to that specified
+    #testing
+    # input = "data/input.txt"
+    # prop_complete = 0.1
+    # dist_file = "data/completeness_distribution.txt"
+    # outdir = "test_output"
+    # avg_breaks = 10
+
+    # set average breaks to one less than specified to ensure that the number of blocks made is equal to that specified
     avg_breaks -= 1
     if avg_breaks < 0:
         avg_breaks = 0
