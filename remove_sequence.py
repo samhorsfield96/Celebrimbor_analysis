@@ -146,6 +146,7 @@ def main():
             size_removal = round(genome_size * (1 - completeness))
 
             # get sizes of each break. If no breaks then just take one big block
+            break_sites = []
             if num_breaks > 0:
                 break_sites = np.random.choice(size_removal, size=num_breaks, replace=False).tolist()
             break_sites.extend([0, size_removal])
