@@ -1,30 +1,5 @@
 import argparse
-import json
-import pandas as pd
-import numpy as np
-import os
-from Bio import SeqIO
-from Bio.Seq import Seq
-from Bio.SeqRecord import SeqRecord
 
-def remove_ranges_from_sequence(sequence, ranges, length_list):
-    # Join the sequences into one string
-    full_sequence = list(''.join(sequence))
-
-    # Remove the specified ranges
-    for start, end in ranges:
-        full_sequence[start:end] = ["0"] * (end - start)
-
-    # split back up into original contigs
-    list_start = 0
-    result = []
-    for length in length_list:
-        to_append = ''.join(full_sequence[list_start: list_start + length])
-        to_append = to_append.replace("0", "")
-        result.append(to_append)
-        list_start += length
-
-    return result
 
 def get_options():
     description = 'Matches genes pre and post simulation using remove_sequences.py'
@@ -45,7 +20,7 @@ def get_options():
 def main():
     options = get_options()
     input = options.input
-    output = options.outdir
+    output = options.output
 
     #testing
     #input = "data/mmseqs_comp_cluster.tsv"
