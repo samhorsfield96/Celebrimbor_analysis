@@ -72,7 +72,7 @@ def main():
     # pan_post = "data/cgt_test/pangenome_summary_sim.tsv"
     # mmseqs_pre = "data/cgt_test/mmseqs_cluster_ori.sorted.tsv"
     # mmseqs_post = "data/cgt_test/mmseqs_cluster_sim.sorted.tsv"
-    # outpref = "celebrimbor_results"
+    # outpref = "data/cgt_test/celebrimbor_results"
 
     # get matched genes, key is gene from simulation
     matched_genes = {}
